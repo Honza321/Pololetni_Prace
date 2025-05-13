@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chytrý květináč</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 100%;
+            width: 400px;
+            position: relative;
+        }
+        h1 {
+            font-size: 2.8em;
+            color: #4caf50;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 16px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s ease-in-out;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-4px);
+        }
+        button:active {
+            transform: translateY(2px);
+        }
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            button {
+                padding: 14px 25px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chytrý květináč 🌱</h1>
+        <button onclick="alert('Zalévání spuštěno!')">Zalít rostlinu</button>
+    </div>
+</body>
+</html>
+
+
