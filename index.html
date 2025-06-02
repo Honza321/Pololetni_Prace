@@ -17,7 +17,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
         }
         .container {
             background: #ffffff;
@@ -27,16 +26,20 @@
             text-align: center;
             max-width: 100%;
             width: 400px;
-            position: relative;
         }
         h1 {
-            font-size: 2.8em;
+            font-size: 2.4em;
             color: #4caf50;
             margin-bottom: 20px;
         }
-        button {
-            padding: 16px 30px;
+        .sensor {
             font-size: 1.2em;
+            margin: 10px 0;
+        }
+        button {
+            margin-top: 20px;
+            padding: 14px 28px;
+            font-size: 1.1em;
             color: white;
             background-color: #4caf50;
             border: none;
@@ -46,7 +49,7 @@
         }
         button:hover {
             background-color: #45a049;
-            transform: translateY(-4px);
+            transform: translateY(-3px);
         }
         button:active {
             transform: translateY(2px);
@@ -56,11 +59,14 @@
                 width: 90%;
             }
             h1 {
-                font-size: 2.2em;
+                font-size: 2em;
+            }
+            .sensor {
+                font-size: 1em;
             }
             button {
-                padding: 14px 25px;
-                font-size: 1.1em;
+                padding: 12px 24px;
+                font-size: 1em;
             }
         }
     </style>
@@ -68,9 +74,10 @@
 <body>
     <div class="container">
         <h1>Chytrý květináč 🌱</h1>
+        <p class="sensor">🌡️ Teplota: <strong>{{TEMP}} °C</strong></p>
+        <p class="sensor">💧 Vlhkost vzduchu: <strong>{{HUM}} %</strong></p>
+        <p class="sensor">🌾 Vlhkost půdy: <strong>{{SOIL}} %</strong></p>
         <button onclick="alert('Zalévání spuštěno!')">Zalít rostlinu</button>
     </div>
 </body>
 </html>
-
-
