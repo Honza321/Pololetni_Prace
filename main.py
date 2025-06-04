@@ -4,36 +4,36 @@ import time
 import machine
 import dht
 
-# 📶 Wi-Fi připojení
+# Wi-Fi připojení
 SSID = 'A53'
 PASSWORD = 'pnrv1845'
 
-# 🌡️ Inicializace senzoru DHT11 (např. GP2 = fyzický pin 4)
+# Inicializace senzoru DHT11 
 dht_sensor = dht.DHT11(machine.Pin(2))
 
 def connect_wifi():
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
     if not wlan.isconnected():
-        print("📡 Připojuji se k Wi-Fi...")
+        print("Pripojuji se k Wi-Fi...")
         wlan.connect(SSID, PASSWORD)
         while not wlan.isconnected():
             time.sleep(1)
-    print("✅ Připojeno k Wi-Fi")
-    print("🌐 IP adresa:", wlan.ifconfig()[0])
+    print("Pripojeno k Wi-Fi")
+    print("IP adresa:", wlan.ifconfig()[0])
 
-# 📊 Čtení hodnot ze senzoru
+# Čtení hodnot ze senzoru
 def get_sensor_data():
     try:
         dht_sensor.measure()
         temperature = dht_sensor.temperature()
         humidity = dht_sensor.humidity()
     except Exception as e:
-        print("❌ Chyba při čtení DHT11:", e)
+        print("Chyba pri cteni DHT11:", e)
         temperature = humidity = -1
     return temperature, humidity
 
-# 🌐 HTML stránka s JavaScriptem pro automatické aktualizace
+# HTML stránka s JavaScriptem pro automatické aktualizace
 def serve_html(temp, hum):
     return f"""<!DOCTYPE html>
 <html lang="cs">
@@ -109,19 +109,19 @@ def serve_html(temp, hum):
 </body>
 </html>"""
 
-# 🌍 Webový server
+# Webový server
 def run_web_server():
     addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
     s = socket.socket()
     s.bind(addr)
     s.listen(1)
-    print("🚀 Server běží na http://0.0.0.0:80")
+    print("Server běží na http://0.0.0.0:80")
 
     while True:
         cl, addr = s.accept()
-        print("💻 Připojeno od:", addr)
+        print("Připojeno od:", addr)
         request = cl.recv(1024).decode()
-        print("📥 Request:", request)
+        print("Request:", request)
 
         if "GET /data" in request:
             temp, hum = get_sensor_data()
@@ -136,6 +136,6 @@ def run_web_server():
 
         cl.close()
 
-# ▶️ Spuštění
+# Spuštění
 connect_wifi()
 run_web_server()
